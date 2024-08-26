@@ -1,14 +1,14 @@
-type Species = "human";
+type ISpecies = "human";
 
-type House = "Gryffindor" | "Slytherin" | "Hufflepuff" | "Ravenclaw";
+export type IHouse = "Gryffindor" | "Slytherin" | "Hufflepuff" | "Ravenclaw";
 
 export interface ICharacter {
   id: string;
   name: string;
   alternate_names: string[];
-  species: Species;
+  species: ISpecies;
   gender: string; // TODO: check possible values
-  house: House;
+  house: IHouse;
   dateOfBirth: Date;
   yearOfBirth: number;
   wizard: boolean;
