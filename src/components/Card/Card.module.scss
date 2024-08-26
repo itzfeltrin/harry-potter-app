@@ -3,13 +3,16 @@ $width: 100%;
 .card {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: 0.5rem;
   width: $width;
-  padding: 2rem;
+  padding: 1rem;
   overflow: hidden;
-  background: #fafafa;
-  border-radius: 0.5rem;
-  box-shadow: 5px 5px 5px 0px #cfcfcf;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   cursor: pointer;
   transition: transform 0.3s ease-out;
 
@@ -23,12 +26,14 @@ $width: 100%;
 
   .image {
     width: 100%;
-    height: 200px;
+    height: 240px;
     object-fit: cover;
+    border-radius: 0.4rem;
   }
 
   .name {
     text-align: center;
     transition: color 0.4s linear;
+    text-wrap: nowrap;
   }
 }

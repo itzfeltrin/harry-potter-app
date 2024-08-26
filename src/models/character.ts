@@ -9,7 +9,7 @@ export interface ICharacter {
   species: ISpecies;
   gender: string; // TODO: check possible values
   house: IHouse;
-  dateOfBirth: Date;
+  dateOfBirth: string;
   yearOfBirth: number;
   wizard: boolean;
   ancestry: string; // TODO: check possible values
