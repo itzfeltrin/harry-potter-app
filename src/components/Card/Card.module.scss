@@ -1,10 +1,34 @@
+$width: 100%;
+
 .card {
   display: flex;
   flex-direction: column;
+  gap: 0.25rem;
+  width: $width;
+  padding: 2rem;
+  overflow: hidden;
+  background: #fafafa;
+  border-radius: 0.5rem;
+  box-shadow: 5px 5px 5px 0px #cfcfcf;
+  cursor: pointer;
+  transition: transform 0.3s ease-out;
+
+  &:hover {
+    transform: scale(1.05);
+
+    .name {
+      color: black;
+    }
+  }
 
   .image {
-    width: 200px;
-    height: 354px;
+    width: 100%;
+    height: 200px;
     object-fit: cover;
+  }
+
+  .name {
+    text-align: center;
+    transition: color 0.4s linear;
   }
 }

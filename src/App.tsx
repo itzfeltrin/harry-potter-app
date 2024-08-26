@@ -31,7 +31,6 @@ function App() {
           display: "grid",
           gridTemplateColumns: "repeat(auto-fill, minmax(200px,  1fr))",
           gap: "1rem",
-          overflowX: "hidden",
         }}
       >
         {characters.map((character) => {
