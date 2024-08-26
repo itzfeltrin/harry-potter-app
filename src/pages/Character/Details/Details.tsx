@@ -1,14 +1,30 @@
-import { CSSProperties, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import { ICharacter } from "../../../models/character";
 import { makeGetRequest } from "../../../utils/api";
 import classes from "./Details.module.scss";
+import { HeartIcon } from "../../../components/Heart";
+import { useSyncState } from "../../../hooks";
 
 export default function Details() {
   const { id } = useParams<{ id: string }>();
 
   const [character, setCharacter] = useState<ICharacter>();
+  const [favorites, setFavorites] = useSyncState<string[]>(
+    "favorite-characters",
+    []
+  );
+
+  const isFavorite = !!id && !!favorites?.includes(id);
+
+  const toggleFavorite = (characterId: string) => {
+    setFavorites(
+      isFavorite
+        ? favorites?.filter((item) => item !== characterId) || []
+        : [...(favorites || []), characterId]
+    );
+  };
 
   useEffect(() => {
     const fetchCharacter = async () => {
@@ -45,6 +61,14 @@ export default function Details() {
           <p>DOB: {dateOfBirth}</p>
         </div>
         <img src={image} alt={name} className={classes.image} />
+        <button
+          className={classes.favorite}
+          onClick={() => {
+            toggleFavorite(character.id);
+          }}
+        >
+          <HeartIcon isFilled={isFavorite} width={20} height={20} />
+        </button>
       </div>
     </section>
   );

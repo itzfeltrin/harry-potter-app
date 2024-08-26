@@ -51,5 +51,19 @@
     &:hover .image {
       filter: opacity(1);
     }
+
+    .favorite {
+      position: absolute;
+      z-index: 1;
+      top: 2rem;
+      right: 2rem;
+      padding: 0;
+      width: 2rem;
+      height: 2rem;
+
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+    }
   }
 }
