@@ -3,6 +3,7 @@ import "./App.css";
 import { makeGetRequest } from "./utils/api";
 import { ICharacter } from "./models/character";
 import Layout from "./components/layout/Layout";
+import { Card } from "./components/Card";
 
 function App() {
   const [characters, setCharacters] = useState<ICharacter[]>([]);
@@ -24,11 +25,19 @@ function App() {
 
   return (
     <Layout>
-      <ul>
+      {/* TODO: Remove style below */}
+      <ul
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fill, minmax(200px,  1fr))",
+          gap: "1rem",
+          overflowX: "hidden",
+        }}
+      >
         {characters.map((character) => {
           return (
             <li key={character.id}>
-              <strong>{character.name}</strong>
+              <Card character={character} />
             </li>
           );
         })}
