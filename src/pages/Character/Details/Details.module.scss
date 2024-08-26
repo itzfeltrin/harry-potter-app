@@ -2,6 +2,11 @@
   width: clamp(320px, 75%, 1024px);
   margin: 0 auto;
 
+  .link {
+    display: block;
+    margin-bottom: 1rem;
+  }
+
   .banner {
     height: 400px;
     background: rgba(0, 0, 0, 0.765);

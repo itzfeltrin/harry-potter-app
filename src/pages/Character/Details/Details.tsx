@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import { ICharacter } from "../../../models/character";
 import { makeGetRequest } from "../../../utils/api";
@@ -50,6 +50,12 @@ export default function Details() {
 
   return (
     <section className={classes.info}>
+      <p className={classes.link}>
+        <Link to="/characters/list">Characters</Link>
+        {" / "}
+        {name}
+      </p>
+
       <div className={classes.banner}>
         <div className={classes.box}>
           <strong className={classes.name}>{name}</strong>
