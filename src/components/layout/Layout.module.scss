@@ -40,28 +40,6 @@ $spacing: 2rem;
         letter-spacing: 1px;
       }
     }
-
-    .favoriteHouse {
-      position: relative;
-
-      .popup {
-        width: 160px;
-        position: absolute;
-        top: calc(100% + 0.5rem);
-        right: 0px;
-        padding: 0.5rem;
-        background: #fff;
-        border-radius: 8px;
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        gap: 4px;
-
-        button {
-          width: 100%;
-        }
-      }
-    }
   }
 
   .content {

@@ -1,0 +1,13 @@
+.filters {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+
+  .button {
+    &.active {
+      background: #333;
+      color: #fff;
+    }
+  }
+}
