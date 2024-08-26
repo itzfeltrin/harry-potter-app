@@ -3,28 +3,15 @@ import { Link, useParams } from "react-router-dom";
 
 import { ICharacter } from "../../../models/character";
 import { makeGetRequest } from "../../../utils/api";
-import classes from "./Details.module.scss";
 import { HeartIcon } from "../../../components/Heart";
-import { useSyncState } from "../../../hooks";
+import { useFavorite } from "../../../hooks";
+import classes from "./Details.module.scss";
 
 export default function Details() {
   const { id } = useParams<{ id: string }>();
 
   const [character, setCharacter] = useState<ICharacter>();
-  const [favorites, setFavorites] = useSyncState<string[]>(
-    "favorite-characters",
-    []
-  );
-
-  const isFavorite = !!id && !!favorites?.includes(id);
-
-  const toggleFavorite = (characterId: string) => {
-    setFavorites(
-      isFavorite
-        ? favorites?.filter((item) => item !== characterId) || []
-        : [...(favorites || []), characterId]
-    );
-  };
+  const [isFavorite, toggleFavorite] = useFavorite(id as string);
 
   useEffect(() => {
     const fetchCharacter = async () => {
@@ -55,7 +42,6 @@ export default function Details() {
         {" / "}
         {name}
       </p>
-
       <div className={classes.banner}>
         <div className={classes.box}>
           <strong className={classes.name}>{name}</strong>

@@ -1,13 +1,16 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
+import { HeartIcon } from "../Heart";
 import { ICharacter } from "../../models/character";
+import { useFavorite } from "../../hooks";
 import classes from "./Card.module.scss";
-import { useState } from "react";
 
 export default function Card({ character }: { character: ICharacter }) {
-  const [failedToLoadImage, setFailedToLoadImage] = useState(false);
-
   const { id, image, name } = character;
+
+  const [failedToLoadImage, setFailedToLoadImage] = useState(false);
+  const [isFavorite, toggleFavorite] = useFavorite(id);
 
   return (
     <Link to={`/character/${id}`} className={classes.card}>
@@ -20,6 +23,15 @@ export default function Card({ character }: { character: ICharacter }) {
         }}
       />
       <strong className={classes.name}>{name}</strong>
+      <button
+        className={classes.favorite}
+        onClick={(e) => {
+          e.preventDefault();
+          toggleFavorite(character.id);
+        }}
+      >
+        <HeartIcon isFilled={isFavorite} width={20} height={20} />
+      </button>
     </Link>
   );
 }
