@@ -12,6 +12,7 @@ export default function Details() {
 
   const [character, setCharacter] = useState<ICharacter>();
   const [isFavorite, toggleFavorite] = useFavorite(id as string);
+  const [failedToLoadImage, setFailedToLoadImage] = useState(false);
 
   useEffect(() => {
     const fetchCharacter = async () => {
@@ -52,7 +53,14 @@ export default function Details() {
           <p>Patronus: {patronus}</p>
           <p>DOB: {dateOfBirth}</p>
         </div>
-        <img src={image} alt={name} className={classes.image} />
+        <img
+          src={failedToLoadImage ? "/assets/imgs/placeholder.jpg" : image}
+          alt={name}
+          className={classes.image}
+          onError={() => {
+            setFailedToLoadImage(true);
+          }}
+        />
         <button
           className={classes.favorite}
           onClick={() => {
