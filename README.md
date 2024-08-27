@@ -9,11 +9,12 @@
   ```bash
   cd harry-potter-app
   ```
-3. **Install the dependencies**
+3. **Create .env file with VITE_API_BASE_URL pointing to the API**
+4. **Install the dependencies**
   ```bash
   npm run install
   ```
-4. **Run dev server**
+5. **Run dev server**
   ```bash
   npm run dev
   ```
